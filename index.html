@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAN3003 普通話對話評核：五維度進階示範</title>
+    <style>
+        :root {
+            --color-same: #cce5ff;
+            --color-diff: #ffe5cc;
+            --color-adj: #d4edda;
+            --color-rec: #e2d9f3;
+            --text-main: #333;
+            --bg-body: #f4f4f9;
+        }
+
+        body {
+            font-family: "Microsoft JhengHei", "Heiti TC", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 { text-align: center; color: #2c3e50; margin-bottom: 20px; }
+
+        .controls {
+            position: sticky; top: 0; background: white; padding: 15px 0;
+            border-bottom: 2px solid #eee; z-index: 100;
+            display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 8px 16px; border: 2px solid transparent; border-radius: 20px;
+            cursor: pointer; font-weight: bold; font-size: 14px; transition: all 0.3s; background: #eee;
+        }
+
+        .btn-same.active { background-color: var(--color-same); border-color: #007bff; }
+        .btn-diff.active { background-color: var(--color-diff); border-color: #fd7e14; }
+        .btn-adj.active { background-color: var(--color-adj); border-color: #28a745; }
+        .btn-rec.active { background-color: var(--color-rec); border-color: #6f42c1; }
+        .btn-reset { background-color: #6c757d; color: white; }
+
+        .tabs { display: flex; margin-bottom: 20px; border-bottom: 1px solid #ccc; flex-wrap: wrap; }
+        .tab-btn {
+            padding: 10px 20px; cursor: pointer; background: none; border: none;
+            border-bottom: 3px solid transparent; font-size: 16px; font-weight: bold; color: #666;
+        }
+        .tab-btn.active { color: #007bff; border-bottom-color: #007bff; }
+
+        .content-section { display: none; animation: fadeIn 0.5s; }
+        .content-section.active { display: block; }
+
+        .dialogue-box { border: 1px solid #e0e0e0; border-radius: 8px; padding: 25px; background-color: #fff; margin-bottom: 30px; }
+        .speaker { font-weight: bold; display: block; margin-top: 15px; }
+        .speaker.client { color: #495057; background-color: #f8f9fa; padding: 12px; border-left: 5px solid #6c757d; }
+        .speaker.student { color: #0056b3; margin-top: 25px; }
+
+        span.hl-same, span.hl-diff, span.hl-adj, span.hl-rec { padding: 2px 4px; border-radius: 4px; transition: background-color 0.3s; }
+        .show-same .hl-same { background-color: var(--color-same); }
+        .show-diff .hl-diff { background-color: var(--color-diff); }
+        .show-adj .hl-adj { background-color: var(--color-adj); }
+        .show-rec .hl-rec { background-color: var(--color-rec); }
+
+        .image-placeholder { margin-top: 20px; border: 2px dashed #bbb; padding: 10px; text-align: center; background: #fafafa; }
+        .image-placeholder img { max-width: 100%; height: auto; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<div class="container" id="mainContainer">
+    <h1>康文署特色場地：五維度深度分析範本</h1>
+    
+    <div class="controls">
+        <button class="btn btn-same" onclick="toggleLayer('show-same', this)">🔵 1. 相同點</button>
+        <button class="btn btn-diff" onclick="toggleLayer('show-diff', this)">🟠 2. 轉折/比較詞</button>
+        <button class="btn btn-adj" onclick="toggleLayer('show-adj', this)">🟢 3. 突出優勢</button>
+        <button class="btn btn-rec" onclick="toggleLayer('show-rec', this)">🟣 4. 豐富推薦</button>
+        <button class="btn btn-reset" onclick="resetLayers()">❌ 全部隱藏</button>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('scene1')">情景一 (婚禮場地)</button>
+        <button class="tab-btn" onclick="openTab('scene2')">情景二 (公司家庭日)</button>
+    </div>
+
+    <div id="scene1" class="content-section active">
+        <div class="dialogue-box">
+            <div class="speaker client">角色甲 (婚禮主任 李小姐)：</div>
+            <p>「您好！我想查詢明年七月預訂婚禮場地的資料，大約70位賓客，預算五千元。希望場地有特色、能拍美照並辦酒會。」</p>
+
+            <div class="speaker student">角色乙 (活動助理 李子晴)：</div>
+            <p>李主任您好！<span class="hl-rec">根據您舉辦70人浪漫婚禮的要求</span>，我特別為您挑選了<b>九龍寨城公園六藝台</b>和<b>鯉魚門公園禮堂</b>。這兩個場地在婚慶市場上<span class="hl-same">都</span>極受歡迎，環境優美且面積寬敞，<span class="hl-same">都能</span>舉行小型酒會並容納您的賓客，且收費<span class="hl-same">都</span>在五千元預算內。讓我從五個維度為您詳細分析：</p>
+            
+            <p>1. <b>空間面積：</b> 六藝台總面積達700平方米，<span class="hl-adj">空間感極佳</span>；<span class="hl-diff">相比之下</span>，鯉魚門禮堂約600平方米，雖略小但<span class="hl-adj">氣氛更顯溫馨凝聚</span>。</p>
+            <p>2. <b>環境特色：</b> 六藝台擁有<span class="hl-adj">古色古香的江南園林美景</span>，適合傳統或中式主題拍照；<span class="hl-diff">而</span>鯉魚門禮堂具備<span class="hl-adj">濃厚歐陸建築風格</span>，其前身為英軍教堂，能拍出<span class="hl-adj">神聖且異國風情的絕美婚紗照</span>。</p>
+            <p>3. <b>設施配套：</b> <span class="hl-diff">值得關注的是</span>，鯉魚門禮堂<span class="hl-adj">附設專屬新娘化妝間</span>，這對於穿著禮服的新娘來說<span class="hl-adj">極其便利且體面</span>；<span class="hl-diff">而</span>六藝台則以<span class="hl-adj">全室外綠化環境</span>取勝。</p>
+            <p>4. <b>影音設備：</b> 六藝台<span class="hl-adj">現場配備全套擴音及音響器材</span>，酒會音樂播放更方便；<span class="hl-diff">然而</span>禮堂作為室內空間，<span class="hl-adj">隔音效果更佳且不受天氣影響</span>。</p>
+            <p>5. <b>靈活性與私密性：</b> 六藝台場地<span class="hl-adj">格局開闊、布局多元</span>；<span class="hl-diff">反觀</span>鯉魚門禮堂<span class="hl-adj">環境清幽、私密性高</span>，能確保婚禮的神聖不被干擾。</p>
+
+            <p><strong>【豐富推介理由】</strong><br>綜合考量，我<span class="hl-rec">強烈推薦您租訂「鯉魚門公園禮堂」</span>。首先，<span class="hl-rec">其歐陸風格完全符合婚禮對浪漫與獨特性的追求</span>；第二，<span class="hl-adj">新娘化妝間是六藝台所欠缺的關鍵設施</span>，能讓您的新人感到倍受尊重；最後，<span class="hl-adj">室內場地免除了七月午後雷陣雨的風險</span>。雖然費用多出500元，但這份<span class="hl-adj">安心感與專業設施絕對物超所值</span>。</p>
+        </div>
+        <div class="image-placeholder"><img src="P1.jpg" alt="場地資料卡 P1"></div>
+    </div>
+
+    <div id="scene2" class="content-section">
+        <div class="dialogue-box">
+            <div class="speaker client">角色甲 (行政主任 黃先生)：</div>
+            <p>「我們公司要辦115人的員工家庭日，有小孩和長者，預算五千。要有遮蔭地方、大自然環境。」</p>
+
+            <div class="speaker student">角色乙 (活動助理 李子晴)：</div>
+            <p>黃先生您好！<span class="hl-rec">針對您百人規模及照顧長幼的需求</span>，我向您推介<b>淺水灣沙灘</b>和<b>九龍寨城公園六藝台</b>。這兩個場地<span class="hl-same">都</span>是團隊活動的理想首選，<span class="hl-same">都</span>擁有開闊的大自然環境及乘涼遮陰設施，首4小時收費<span class="hl-same">均為</span>3,000元，性價比極高。以下是五個方面的比較：</p>
+            
+            <p>1. <b>場地容納量：</b> 淺水灣面積達850平方米，<span class="hl-adj">為所有場地之冠，能確保115位員工不顯擁擠</span>；<span class="hl-diff">相比之下</span>，六藝台為700平方米，容納200人雖綽綽有餘，但<span class="hl-adj">活動舒展度略遜於海灘</span>。</p>
+            <p>2. <b>環境氛圍：</b> 淺水灣具備<span class="hl-adj">水清沙細的海景與樹影婆娑的休閒氛圍</span>；<span class="hl-diff">而</span>六藝台則是<span class="hl-adj">歷史與自然交織的江南園林</span>，氣氛較為莊重。</p>
+            <p>3. <b>幼兒配套：</b> <span class="hl-diff">最突出的優點在於</span>，淺水灣<span class="hl-adj">設有兒童遊樂場</span>。對於您提到的30名小孩，這不僅是<span class="hl-adj">絕佳的放電空間，更讓家長能安心參與公司活動</span>。</p>
+            <p>4. <b>長者避暑：</b> 六藝台擁有著名的「竹桐軒」涼亭，<span class="hl-adj">通風清涼且文化氣息濃郁</span>；<span class="hl-diff">不過</span>，淺水灣同樣設有<span class="hl-adj">臨海涼亭及小花園</span>，讓長者在海風中<span class="hl-adj">享受極佳的視覺美感</span>。</p>
+            <p>5. <b>影音配套：</b> 六藝台<span class="hl-adj">配備擴音系統</span>，適合主持全體宣佈或致辭；<span class="hl-diff">相對而言</span>，沙灘活動則更側重於<span class="hl-adj">動態體驗與親子互動</span>。</p>
+
+            <p><strong>【豐富推介理由】</strong><br>考量到參與人數及家庭日性質，我<span class="hl-rec">強烈建議預訂「淺水灣沙灘」</span>。最核心理由是其<span class="hl-rec">850平方米的超大空間能讓大型團建活動靈活展開</span>。其次，<span class="hl-adj">兒童遊樂場是其他場地無法替代的優勢</span>，能完美解決小孩的安頓問題。最後，<span class="hl-adj">海濱涼亭的舒適度對長者極為友好</span>，讓這次家庭日能真正做到<span class="hl-adj">長幼同樂、皆大歡喜</span>。</p>
+        </div>
+        <div class="image-placeholder"><img src="P1.jpg" alt="場地資料卡 P1"></div>
+    </div>
+</div>
+
+<script>
+    function openTab(tabName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("content-section");
+        for (i = 0; i < x.length; i++) { x[i].style.display = "none"; x[i].classList.remove("active"); }
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
+        document.getElementById(tabName).style.display = "block";
+        setTimeout(() => { document.getElementById(tabName).classList.add("active"); }, 10);
+        event.currentTarget.classList.add("active");
+    }
+
+    function toggleLayer(className, btnElement) {
+        var container = document.getElementById("mainContainer");
+        if (container.classList.contains(className)) {
+            container.classList.remove(className);
+            btnElement.classList.remove("active");
+        } else {
+            container.classList.add(className);
+            btnElement.classList.add("active");
+        }
+    }
+
+    function resetLayers() {
+        var container = document.getElementById("mainContainer");
+        container.classList.remove("show-same", "show-diff", "show-adj", "show-rec");
+        var btns = document.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) { btns[i].classList.remove("active"); }
+    }
+</script>
+
+</body>
+</html>
