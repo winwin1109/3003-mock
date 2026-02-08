@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LAN3003 普通話對話評核：五維度進階示範</title>
+    <title>LAN3003 普通話對話評核：五維度進階示範 (圖表豐富版)</title>
     <style>
         :root {
             --color-same: #cce5ff;
@@ -72,7 +72,40 @@
         .show-adj .hl-adj { background-color: var(--color-adj); }
         .show-rec .hl-rec { background-color: var(--color-rec); }
 
-        .image-placeholder { margin-top: 20px; border: 2px dashed #bbb; padding: 10px; text-align: center; background: #fafafa; }
+        /* 表格樣式 */
+        .comparison-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px; 
+            margin-bottom: 20px; /* 增加底部間距給圖片 */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 0.95em;
+        }
+        .comparison-table th, .comparison-table td { 
+            border: 1px solid #ddd; 
+            padding: 12px; 
+            text-align: left; 
+            vertical-align: top;
+        }
+        .comparison-table th { 
+            background-color: #f2f2f2; 
+            color: #333; 
+            font-weight: bold;
+            text-align: center;
+        }
+        .comparison-table tr:nth-child(even) { background-color: #f9f9f9; }
+        .comparison-table .highlight-row { font-weight: bold; color: #0056b3; background-color: #eef6ff; }
+        .visual-title {
+            text-align: center; font-size: 1.1em; color: #666; margin-top: 10px; font-weight: bold;
+        }
+        
+        .image-placeholder { 
+            margin-top: 20px; 
+            border: 2px dashed #bbb; 
+            padding: 10px; 
+            text-align: center; 
+            background: #fafafa; 
+        }
         .image-placeholder img { max-width: 100%; height: auto; }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -81,12 +114,12 @@
 <body>
 
 <div class="container" id="mainContainer">
-    <h1>康文署特色場地：五維度深度分析範本</h1>
+    <h1>康文署特色場地：五維度深度分析範本 (圖表豐富版)</h1>
     
     <div class="controls">
         <button class="btn btn-same" onclick="toggleLayer('show-same', this)">🔵 1. 相同點</button>
         <button class="btn btn-diff" onclick="toggleLayer('show-diff', this)">🟠 2. 轉折/比較詞</button>
-        <button class="btn btn-adj" onclick="toggleLayer('show-adj', this)">🟢 3. 突出優勢</button>
+        <button class="btn btn-adj" onclick="toggleLayer('show-adj', this)">🟢 3. 突出優勢 (形容詞)</button>
         <button class="btn btn-rec" onclick="toggleLayer('show-rec', this)">🟣 4. 豐富推薦</button>
         <button class="btn btn-reset" onclick="resetLayers()">❌ 全部隱藏</button>
     </div>
@@ -104,15 +137,61 @@
             <div class="speaker student">角色乙 (活動助理 李子晴)：</div>
             <p>李主任您好！<span class="hl-rec">根據您舉辦70人浪漫婚禮的要求</span>，我特別為您挑選了<b>九龍寨城公園六藝台</b>和<b>鯉魚門公園禮堂</b>。這兩個場地在婚慶市場上<span class="hl-same">都</span>極受歡迎，環境優美且面積寬敞，<span class="hl-same">都能</span>舉行小型酒會並容納您的賓客，且收費<span class="hl-same">都</span>在五千元預算內。讓我從五個維度為您詳細分析：</p>
             
-            <p>1. <b>空間面積：</b> 六藝台總面積達700平方米，<span class="hl-adj">空間感極佳</span>；<span class="hl-diff">相比之下</span>，鯉魚門禮堂約600平方米，雖略小但<span class="hl-adj">氣氛更顯溫馨凝聚</span>。</p>
-            <p>2. <b>環境特色：</b> 六藝台擁有<span class="hl-adj">古色古香的江南園林美景</span>，適合傳統或中式主題拍照；<span class="hl-diff">而</span>鯉魚門禮堂具備<span class="hl-adj">濃厚歐陸建築風格</span>，其前身為英軍教堂，能拍出<span class="hl-adj">神聖且異國風情的絕美婚紗照</span>。</p>
-            <p>3. <b>設施配套：</b> <span class="hl-diff">值得關注的是</span>，鯉魚門禮堂<span class="hl-adj">附設專屬新娘化妝間</span>，這對於穿著禮服的新娘來說<span class="hl-adj">極其便利且體面</span>；<span class="hl-diff">而</span>六藝台則以<span class="hl-adj">全室外綠化環境</span>取勝。</p>
-            <p>4. <b>影音設備：</b> 六藝台<span class="hl-adj">現場配備全套擴音及音響器材</span>，酒會音樂播放更方便；<span class="hl-diff">然而</span>禮堂作為室內空間，<span class="hl-adj">隔音效果更佳且不受天氣影響</span>。</p>
-            <p>5. <b>靈活性與私密性：</b> 六藝台場地<span class="hl-adj">格局開闊、布局多元</span>；<span class="hl-diff">反觀</span>鯉魚門禮堂<span class="hl-adj">環境清幽、私密性高</span>，能確保婚禮的神聖不被干擾。</p>
+            <p>1. <b>空間面積：</b> 六藝台總面積達600平方米，<span class="hl-adj">空間感極佳，開揚通透</span>；<span class="hl-diff">相比之下</span>，鯉魚門禮堂連同前方空地總面積約500平方米，雖比六藝台略小，但<span class="hl-adj">氣氛更集中，感覺更親近</span>。</p>
+            
+            <p>2. <b>環境特色：</b> 六藝台採用<span class="hl-adj">清初江南園林佈局</span>，亭台樓閣，<span class="hl-adj">古色古香</span>，非常適合拍攝中式傳統婚紗照；<span class="hl-diff">截然不同的是</span>，鯉魚門禮堂前身為英軍教堂，四周樹木環抱，<span class="hl-adj">充滿濃厚的歐陸風情</span>，能拍出<span class="hl-adj">神聖莊嚴且具異國情調</span>的絕美照片。</p>
+            
+            <p>3. <b>設施配套：</b> <span class="hl-diff">值得您特別留意的是</span>，鯉魚門禮堂<span class="hl-adj">專設獨立的新娘化妝間</span>，這對穿著厚重禮服的新娘來說，是<span class="hl-adj">極其便利且體面</span>的配置；<span class="hl-diff">而</span>六藝台則保留了<span class="hl-adj">原汁原味的戶外古蹟風貌</span>，以自然景觀為主。</p>
+            
+            <p>4. <b>影音設備：</b> 鯉魚門禮堂配備<span class="hl-adj">專業舞台燈光及音響器材</span>，能營造出<span class="hl-adj">如夢似幻的舞台效果</span>；<span class="hl-diff">相對而言</span>，六藝台雖有擴音設備，但更適合<span class="hl-adj">自然採光</span>的日間活動。</p>
+            
+            <p>5. <b>靈活性與私密性：</b> 六藝台場地<span class="hl-adj">佈局多元、可塑性高</span>；<span class="hl-diff">反觀</span>鯉魚門禮堂<span class="hl-adj">環境清幽、獨處一角</span>，能確保婚禮儀式的神聖感不被外界打擾。</p>
 
-            <p><strong>【豐富推介理由】</strong><br>綜合考量，我<span class="hl-rec">強烈推薦您租訂「鯉魚門公園禮堂」</span>。首先，<span class="hl-rec">其歐陸風格完全符合婚禮對浪漫與獨特性的追求</span>；第二，<span class="hl-adj">新娘化妝間是六藝台所欠缺的關鍵設施</span>，能讓您的新人感到倍受尊重；最後，<span class="hl-adj">室內場地免除了七月午後雷陣雨的風險</span>。雖然費用多出500元，但這份<span class="hl-adj">安心感與專業設施絕對物超所值</span>。</p>
+            <p><strong>【豐富推介理由】</strong><br>綜合考量，我<span class="hl-rec">強烈推薦您租訂「鯉魚門公園禮堂」</span>。首先，<span class="hl-rec">其前身為教堂的歐陸風格，完全契合婚禮對浪漫與神聖的追求</span>；第二，<span class="hl-adj">專屬的新娘化妝間是六藝台所欠缺的關鍵設施</span>，能讓新人感到倍受尊重；最後，<span class="hl-adj">室內配備的專業燈光</span>能為您的酒會增添高雅氣氛。雖然費用多出500元，但這份<span class="hl-adj">安心感與專業設施絕對物超所值</span>。</p>
         </div>
-        <div class="image-placeholder"><img src="P1.jpg" alt="場地資料卡 P1"></div>
+        
+        <div class="visual-title">▼ 婚禮場地：五維度詳細規格對比 ▼</div>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th width="12%">比較項目</th>
+                    <th width="44%">九龍寨城公園 (六藝台)</th>
+                    <th width="44%">鯉魚門公園 (禮堂)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center"><b>1. 面積</b></td>
+                    <td><b>600平方米</b><br>格局：全戶外園林<br>特點：空間開揚，採光極佳</td>
+                    <td><b>500平方米</b> (禮堂+空地)<br>格局：室內教堂 + 戶外空地<br>特點：氣氛集中，溫馨親密</td>
+                </tr>
+                <tr>
+                    <td align="center"><b>2. 環境</b></td>
+                    <td><b>清初江南園林</b><br>風格：古樸典雅、亭台樓閣<br>適合：中式傳統婚紗照</td>
+                    <td><b>歐陸風情古蹟</b><br>背景：前英軍教堂、樹木環抱<br>適合：神聖莊嚴、異國情調</td>
+                </tr>
+                <tr>
+                    <td align="center" class="highlight-row">3. 設施</td>
+                    <td><b>戶外古蹟原貌</b><br>基本配置：電源、長桌、膠椅<br>優點：保留自然景觀</td>
+                    <td class="highlight-row"><b>★ 專屬新娘化妝間 ★</b><br>增值配置：講台、長排木椅<br>優點：方便更衣補妝，體面尊貴</td>
+                </tr>
+                <tr>
+                    <td align="center"><b>4. 設備</b></td>
+                    <td><b>基本擴音系統</b><br>適合：日間自然光酒會</td>
+                    <td><b>專業舞台燈光及音響</b><br>適合：營造夢幻晚宴效果</td>
+                </tr>
+                <tr>
+                    <td align="center"><b>5. 私密</b></td>
+                    <td><b>佈局多元</b><br>遊客較多，開放性高</td>
+                    <td><b>獨處一角</b><br>環境清幽，不受外界打擾</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="image-placeholder">
+            <img src="P1.jpg" alt="場地資料卡 P1 (請確保圖片檔案在同一資料夾)">
+            <p style="font-size: 12px; color: #888;">(圖：康文署特色場地資料卡 - 婚禮篇)</p>
+        </div>
     </div>
 
     <div id="scene2" class="content-section">
@@ -123,15 +202,61 @@
             <div class="speaker student">角色乙 (活動助理 李子晴)：</div>
             <p>黃先生您好！<span class="hl-rec">針對您百人規模及照顧長幼的需求</span>，我向您推介<b>淺水灣沙灘</b>和<b>九龍寨城公園六藝台</b>。這兩個場地<span class="hl-same">都</span>是團隊活動的理想首選，<span class="hl-same">都</span>擁有開闊的大自然環境及乘涼遮陰設施，首4小時收費<span class="hl-same">均為</span>3,000元，性價比極高。以下是五個方面的比較：</p>
             
-            <p>1. <b>場地容納量：</b> 淺水灣面積達850平方米，<span class="hl-adj">為所有場地之冠，能確保115位員工不顯擁擠</span>；<span class="hl-diff">相比之下</span>，六藝台為700平方米，容納200人雖綽綽有餘，但<span class="hl-adj">活動舒展度略遜於海灘</span>。</p>
-            <p>2. <b>環境氛圍：</b> 淺水灣具備<span class="hl-adj">水清沙細的海景與樹影婆娑的休閒氛圍</span>；<span class="hl-diff">而</span>六藝台則是<span class="hl-adj">歷史與自然交織的江南園林</span>，氣氛較為莊重。</p>
-            <p>3. <b>幼兒配套：</b> <span class="hl-diff">最突出的優點在於</span>，淺水灣<span class="hl-adj">設有兒童遊樂場</span>。對於您提到的30名小孩，這不僅是<span class="hl-adj">絕佳的放電空間，更讓家長能安心參與公司活動</span>。</p>
-            <p>4. <b>長者避暑：</b> 六藝台擁有著名的「竹桐軒」涼亭，<span class="hl-adj">通風清涼且文化氣息濃郁</span>；<span class="hl-diff">不過</span>，淺水灣同樣設有<span class="hl-adj">臨海涼亭及小花園</span>，讓長者在海風中<span class="hl-adj">享受極佳的視覺美感</span>。</p>
-            <p>5. <b>影音配套：</b> 六藝台<span class="hl-adj">配備擴音系統</span>，適合主持全體宣佈或致辭；<span class="hl-diff">相對而言</span>，沙灘活動則更側重於<span class="hl-adj">動態體驗與親子互動</span>。</p>
+            <p>1. <b>場地容納量：</b> 淺水灣包含沙灘與花園，總面積達850平方米，<span class="hl-adj">極其寬敞，能確保115位員工活動自如</span>；<span class="hl-diff">相比之下</span>，六藝台為600平方米，雖也能容納200人，但<span class="hl-adj">在進行集體遊戲時，舒展度略遜於海灘</span>。</p>
+            
+            <p>2. <b>環境氛圍：</b> 淺水灣擁有<span class="hl-adj">彎月型的優美海岸線</span>，<span class="hl-adj">水清沙細，樹影婆娑</span>，充滿陽光活力的度假氣息；<span class="hl-diff">而</span>六藝台則是<span class="hl-adj">古色古香的江南園林</span>，遍佈歷史遺跡，氣氛較為<span class="hl-adj">莊重儒雅</span>。</p>
+            
+            <p>3. <b>幼兒配套：</b> <span class="hl-diff">淺水灣擁有一個絕對優勢</span>，那就是<span class="hl-adj">專設的兒童遊樂場</span>。對於您提到的30名活潑好動的小孩來說，這是一個<span class="hl-adj">無可替代的「放電」天堂</span>；<span class="hl-diff">反觀</span>六藝台主要以觀賞為主，缺乏專為兒童設計的遊樂設施。</p>
+            
+            <p>4. <b>長者避暑：</b> 六藝台擁有著名的「竹桐軒」涼亭，<span class="hl-adj">環境清幽，通風清涼</span>，適合長者品茶歇息；<span class="hl-diff">不過</span>，淺水灣同樣設有<span class="hl-adj">臨海涼亭及400平方米的小花園</span>，讓長者在享受海風的同時，也能<span class="hl-adj">免受烈日暴曬</span>。</p>
+            
+            <p>5. <b>活動性質：</b> 六藝台<span class="hl-adj">文化底蘊深厚</span>，適合舉辦靜態導賞或文化工作坊；<span class="hl-diff">相對而言</span>，沙灘環境則更側重於<span class="hl-adj">堆沙、排球等動態體驗與親子互動</span>。</p>
 
-            <p><strong>【豐富推介理由】</strong><br>考量到參與人數及家庭日性質，我<span class="hl-rec">強烈建議預訂「淺水灣沙灘」</span>。最核心理由是其<span class="hl-rec">850平方米的超大空間能讓大型團建活動靈活展開</span>。其次，<span class="hl-adj">兒童遊樂場是其他場地無法替代的優勢</span>，能完美解決小孩的安頓問題。最後，<span class="hl-adj">海濱涼亭的舒適度對長者極為友好</span>，讓這次家庭日能真正做到<span class="hl-adj">長幼同樂、皆大歡喜</span>。</p>
+            <p><strong>【豐富推介理由】</strong><br>考量到參與人數及家庭日性質，我<span class="hl-rec">強烈建議預訂「淺水灣沙灘」</span>。最核心理由是其<span class="hl-rec">彎月型沙灘結合兒童遊樂場，能完美滿足親子互動的需求</span>。其次，<span class="hl-adj">廣闊的臨海涼亭和小花園</span>，為長者提供了舒適的觀景休息區，解決了戶外怕熱的擔憂。最後，<span class="hl-adj">水清沙細的自然環境能讓員工徹底放鬆</span>，讓這次家庭日真正做到<span class="hl-adj">長幼同樂、動靜皆宜</span>。</p>
         </div>
-        <div class="image-placeholder"><img src="P1.jpg" alt="場地資料卡 P1"></div>
+
+        <div class="visual-title">▼ 家庭日場地：五維度詳細規格對比 ▼</div>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th width="12%">比較項目</th>
+                    <th width="44%">淺水灣沙灘</th>
+                    <th width="44%">九龍寨城公園 (六藝台)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="center"><b>1. 容量</b></td>
+                    <td><b>850平方米</b> (沙灘+涼亭+花園)<br>特點：空間極大，活動極其自如</td>
+                    <td><b>600平方米</b><br>特點：可容納200人，但集體活動稍擠</td>
+                </tr>
+                <tr>
+                    <td align="center"><b>2. 氛圍</b></td>
+                    <td><b>陽光活力度假風</b><br>景色：水清沙細、彎月海灘、樹影婆娑<br>氣氛：輕鬆、動感</td>
+                    <td><b>歷史文化儒雅風</b><br>景色：江南園林、古蹟遺跡<br>氣氛：莊重、靜態</td>
+                </tr>
+                <tr>
+                    <td align="center" class="highlight-row">3. 幼兒</td>
+                    <td class="highlight-row"><b>★ 專設兒童遊樂場 ★</b><br>優點：完美解決小孩「放電」需求</td>
+                    <td><b>無專用遊樂設施</b><br>優點：適合靜態觀賞、散步</td>
+                </tr>
+                <tr>
+                    <td align="center"><b>4. 長者</b></td>
+                    <td><b>臨海涼亭 + 小花園</b><br>設施：可看海景，免受烈日暴曬</td>
+                    <td><b>竹桐軒涼亭</b><br>設施：通風清涼，適合品茶</td>
+                </tr>
+                <tr>
+                    <td align="center"><b>5. 性質</b></td>
+                    <td><b>動態互動</b><br>例子：堆沙、排球、家庭遊戲</td>
+                    <td><b>靜態欣賞</b><br>例子：文化導賞、歷史講解</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="image-placeholder">
+            <img src="P1.jpg" alt="場地資料卡 P1 (請確保圖片檔案在同一資料夾)">
+            <p style="font-size: 12px; color: #888;">(圖：康文署特色場地資料卡 - 家庭日篇)</p>
+        </div>
     </div>
 </div>
 
